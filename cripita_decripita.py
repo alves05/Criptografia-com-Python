@@ -17,9 +17,7 @@ def codificar_vigenere(mensagem, chave, ordem="direta"):
     mensagem_transformada = ""
 
     # Garante que a chave e a mensagem tenham o mesmo tamanho
-    if len(chave) > len(mensagem):
-        chave = chave[:len(mensagem)]
-    elif len(chave) < len(mensagem):
+    if len(chave) < len(mensagem):
         while len(chave) < len(mensagem):
             chave += chave
         chave = chave[:len(mensagem)]
