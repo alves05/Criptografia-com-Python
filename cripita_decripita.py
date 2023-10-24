@@ -1,5 +1,9 @@
-# Função para codificar a mensagem
-def codificar(mensagem, chave):
+#%%
+def codificar_cesar(mensagem, chave):
+    """
+    Aplica o método da Cifra de Cesar na codificação de ```mensagem``` utilizando o valor de ```chave```.
+    """
+
     mensagem_codificada = ""
     for caractere in mensagem:
         # Verifica se o caractere é uma letra
@@ -11,12 +15,36 @@ def codificar(mensagem, chave):
         else:
             # Se o caractere não for uma letra, ele é adicionado à mensagem codificada sem alterações
             mensagem_codificada += caractere
+
     return mensagem_codificada
 
+codificar_cesar("olá mundo",5)
+#%%
+
+def codificar(mensagem, chave, metodo="cesar"):
+    """
+    Função que escolhe qual método de criptografia será utilizado. Suporta os métodos:
+        - Cifra de César
+
+    ----------------------
+    ENTRADAS:
+        - mensagem, ```str```: String da mensagem que será codificada.
+        - chave, ```str```: String contendo a chave secreta para codificação que será utilizada.
+        - metodo, ```str```: String que define o algoritmo de codificação que será utilizado. Default = Cifra de Cesar.
+    ----------------------
+    SAÍDAS:
+        - cifra, ```str```: String com o resultado das operações de codificação aplicadas.
+    """
+    
+    cifra = globals()[f'codificar_{metodo}'](mensagem, chave)
+    print(cifra)
+    return cifra
+
+#%%
 # Função para decodificar a mensagem
-def decodificar(mensagem_codificada, chave):
+def decodificar(mensagem_codificada, chave, metodo="cesar"):
     # A decodificação é feita codificando a mensagem com a chave complementar (26 - chave)
-    return codificar(mensagem_codificada, 26 - chave)
+    return codificar(mensagem_codificada, 26 - chave, metodo)
 
 # Função principal que interage com o usuário
 def main():
