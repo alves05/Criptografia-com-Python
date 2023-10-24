@@ -1,6 +1,7 @@
-def codificar_cesar(mensagem, chave, ordem="direta"):
+#%%
+def codificar_vigenere(mensagem, chave, ordem="direta"):
     """
-    Aplica o método da Cifra de Cesar na codificação.
+    Aplica o método da Cifra de Vigènere na codificação.
     ----------------------
     ENTRADA:
         - mensagem, ```str```: Texto que irá ser criptografado.
@@ -13,19 +14,49 @@ def codificar_cesar(mensagem, chave, ordem="direta"):
         _ mensagem_transformada, ```str```: Mensagem criptografada, em ordem direta, ou mensagem
                                             descriptografada, se ordem inversa.
     """
-    ordem = ordem.lower()
     mensagem_transformada = ""
-        
-    if ordem not in ("direta", "inversa"):
-        raise Exception("Valor de `ordem` inválido. Escolha entre `direta` ou `inversa`.")
+
+    # Garante que a chave e a mensagem tenham o mesmo tamanho
+    if len(chave) > len(mensagem):
+        chave = chave[:len(mensagem)]
+    elif len(chave) < len(mensagem):
+        while len(chave) < len(mensagem):
+            chave += chave
+        chave = chave[:len(mensagem)]
 
     if ordem == "direta":
-        for caractere in mensagem:
-            mensagem_transformada += chr(ord(caractere) + chave)
+        for car_chave, car_mensagem in zip(chave, mensagem):
+            offset = transforma_chave(car_chave)
+            mensagem_transformada += chr(ord(car_mensagem) + offset)
+    else:
+        for car_chave, car_mensagem in zip(chave[::-1], mensagem):
+            offset = transforma_chave(car_chave)
+            mensagem_transformada += chr(ord(car_mensagem) - offset)
+
     
-    if ordem == "inversa":
-        for caractere in mensagem:
-            mensagem_transformada += chr(ord(caractere) - chave)
+    return mensagem_transformada
+
+def codificar_cesar(mensagem, chave, ordem="direta"):
+    """
+    Aplica o método da Cifra de Cesar na codificação, usando chave única.
+    ----------------------
+    ENTRADA:
+        - mensagem, ```str```: Texto que irá ser criptografado.
+        - chave, ```str```: Senha alfanumérica que irá definir a offset do texto.
+    ----------------------
+    SAÍDA:
+        - mensagem_transformada, ```str```: Mensagem criptografada, em ordem direta, ou mensagem
+                                            descriptografada, se ordem inversa.
+    """
+
+    chave_numerica = transforma_chave(chave)
+
+    mensagem_transformada = ""
+    for caractere in mensagem:
+        if ordem == "direta":
+            mensagem_transformada += chr(ord(caractere) + chave_numerica)
+        else:
+            mensagem_transformada += chr(ord(caractere) - chave_numerica)
 
     return mensagem_transformada
 
@@ -38,79 +69,30 @@ def transforma_chave(chave):
     
     return chave_numerica
 
-def codificar(mensagem, chave, metodo="cesar"):
+def codificar(mensagem, chave, ordem="direta", metodo="cesar"):
     """
     Função que escolhe qual método de criptografia será utilizado. Suporta os métodos:
-        - Cifra de César
-
+        - Cifra de César (cesar)
+        - Cifra de Vigènere (vigenere)
     ----------------------
     ENTRADAS:
         - mensagem, ```str```: String da mensagem que será codificada.
         - chave, ```str```: String contendo a chave secreta para codificação que será utilizada.
         - metodo, ```str```: String que define o algoritmo de codificação que será utilizado. Default = Cifra de Cesar.
+        - ordem, ```str```: Define se a mensagem será criptografada (ordem direta) ou descriptografada (ordem inversa).
     ----------------------
     SAÍDAS:
         - cifra, ```str```: String com o resultado das operações de codificação aplicadas.
     """
-    chave_numerica = transforma_chave(chave)
-    cifra = globals()[f'codificar_{metodo}'](mensagem, chave_numerica)
+
+    ordem = ordem.lower()
+    if ordem not in ("direta", "inversa"):
+        raise Exception("Valor de `ordem` inválido. Escolha entre `direta` ou `inversa`.")
+
+    cifra = globals()[f'codificar_{metodo}'](mensagem, chave, ordem)
+
     return cifra
-
-def decodificar(mensagem_codificada, chave, metodo="cesar"):
-    """
-    Função que recupera uma mensagem codificada previamente.
-    ----------------------
-    ENTRADA:
-        - mensagem_codificada, ```str```: Mensagem criptografada utilizando ````chave``` e ```método```
-        - chave, ```str```: Chave secreta para descriptografia. Precisa ser igual à chave utilizada na criptografia.
-        - metodo, ```str```: Método de descriptografia a ser utilizado. Precisa ser o mesmo utilizado para a criptografia.
-    ----------------------
-    SAÍDA:
-        - mensagem, ```str```: Mensagem original.
-    
-    """
-    chave_numerica = transforma_chave(chave)
-    mensagem = globals()[f'codificar_{metodo}'](mensagem_codificada, chave_numerica, ordem="inversa")
-    return mensagem
-
-# print(codificar("olá mundo", 5))
-# print(codificar("ola mundo", 5))
-# print(codificar("olá mundo!", 5))
-# print(codificar("olá mundo?!", 5))
-# print(codificar("olá mundo, Aqui é Adam", 5))
-# print(codificar("a", 5))
-# print(codificar("A", 5))
-# print(codificar("á", 5))
-# print(codificar("Á", 5))
-# print(codificar("à", 5))
-# print(codificar("À", 5))
-# print(codificar("ã", 5))
-# print(codificar("Ã", 5))
-# print(codificar("â", 5))
-# print(codificar("Â", 5))
-# print(codificar("ä", 5))
-# print(codificar("Ä", 5))
-# print(codificar("a", "pao"))
-
-# print(decodificar("¤¡ĖU¢ª£¤", 5))
-# print(decodificar("¤¡U¢ª£¤", 5))
-# print(decodificar("¤¡ĖU¢ª£¤V", 5))
-# print(decodificar("¤¡ĖU¢ª£¤tV", 5))
-# print(decodificar("¤¡ĖU¢ª£¤aUv¦ªUĞUv¢", 5))
-# print(decodificar("", 5))
-# print(decodificar("v", 5))
-# print(decodificar("Ė", 5))
-# print(decodificar("ö", 5))
-# print(decodificar("ĕ", 5))
-# print(decodificar("õ", 5))
-# print(decodificar("Ę", 5))
-# print(decodificar("ø", 5))
-# print(decodificar("ė", 5))
-# print(decodificar("÷", 5))
-# print(decodificar("ę", 5))
-# print(decodificar("ù", 5))
-# print(decodificar("ơ", "pao"))
-
+#%%
 # Função principal que interage com o usuário
 def main():
     while True:
@@ -126,10 +108,50 @@ def main():
         chave = input("Insira a chave: ")
         # Codifica ou decodifica a mensagem com base na escolha do usuário e exibe o resultado
         if modo.lower() == 'codificar':
-            print("Mensagem codificada:", codificar(mensagem, chave))
+            print("Mensagem codificada:", codificar(mensagem, chave, ordem="direta", metodo='vigenere'))
         else:
-            print("Mensagem decodificada:", decodificar(mensagem, chave))
+            print("Mensagem decodificada:", codificar(mensagem, chave, ordem="inversa", metodo='vigenere'))
 
 # Garante que a função principal será executada apenas se este script for executado diretamente (não quando importado como um módulo)
 if __name__ == "__main__":
     main()
+#%%
+# print(codificar("olá mundo", '5',ordem="direta",metodo="vigenere"))
+# print(codificar("ola mundo", '5',ordem="direta",metodo="vigenere"))
+# print(codificar("olá mundo!", '5',ordem="direta",metodo="vigenere"))
+# print(codificar("olá mundo?!", '5',ordem="direta",metodo="vigenere"))
+# print(codificar("olá mundo, Aqui é Adam", '5',ordem="direta",metodo="vigenere"))
+# print(codificar("a", '5',ordem="direta",metodo="vigenere"))
+# print(codificar("A", '5',ordem="direta",metodo="vigenere"))
+# print(codificar("á", '5',ordem="direta",metodo="vigenere"))
+# print(codificar("Á", '5',ordem="direta",metodo="vigenere"))
+# print(codificar("à", '5',ordem="direta",metodo="vigenere"))
+# print(codificar("À", '5',ordem="direta",metodo="vigenere"))
+# print(codificar("ã", '5',ordem="direta",metodo="vigenere"))
+# print(codificar("Ã", '5',ordem="direta",metodo="vigenere"))
+# print(codificar("â", '5',ordem="direta",metodo="vigenere"))
+# print(codificar("Â", '5',ordem="direta",metodo="vigenere"))
+# print(codificar("ä", '5',ordem="direta",metodo="vigenere"))
+# print(codificar("Ä", '5',ordem="direta",metodo="vigenere"))
+# print(codificar("a", "pao",ordem="direta",metodo="vigenere"))
+
+#%%
+# print(codificar("¤¡ĖU¢ª£¤", '5',ordem="inversa",metodo="vigenere"))
+# print(codificar("¤¡U¢ª£¤", '5',ordem="inversa",metodo="vigenere"))
+# print(codificar("¤¡ĖU¢ª£¤V", '5',ordem="inversa",metodo="vigenere"))
+# print(codificar("¤¡ĖU¢ª£¤tV", '5',ordem="inversa",metodo="vigenere"))
+# print(codificar("¤¡ĖU¢ª£¤aUv¦ªUĞUv¢", '5',ordem="inversa",metodo="vigenere"))
+# print(codificar("", '5',ordem="inversa",metodo="vigenere"))
+# print(codificar("v", '5',ordem="inversa",metodo="vigenere"))
+# print(codificar("Ė", '5',ordem="inversa",metodo="vigenere"))
+# print(codificar("ö", '5',ordem="inversa",metodo="vigenere"))
+# print(codificar("ĕ", '5',ordem="inversa",metodo="vigenere"))
+# print(codificar("õ", '5',ordem="inversa",metodo="vigenere"))
+# print(codificar("Ę", '5',ordem="inversa",metodo="vigenere"))
+# print(codificar("ø", '5',ordem="inversa",metodo="vigenere"))
+# print(codificar("ė", '5',ordem="inversa",metodo="vigenere"))
+# print(codificar("÷", '5',ordem="inversa",metodo="vigenere"))
+# print(codificar("ę", '5',ordem="inversa",metodo="vigenere"))
+# print(codificar("ù", '5',ordem="inversa",metodo="vigenere"))
+# print(codificar("Ñ", "pao",ordem="inversa",metodo="vigenere"))
+# %%
