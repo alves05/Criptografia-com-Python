@@ -20,7 +20,8 @@ def codificar_vigenere(mensagem, chave, ordem="direta"):
     if len(chave) < len(mensagem):
         while len(chave) < len(mensagem):
             chave += chave
-        chave = chave[:len(mensagem)]
+    
+    chave = chave[:len(mensagem)]
 
     if ordem == "direta":
         for car_chave, car_mensagem in zip(chave, mensagem):
