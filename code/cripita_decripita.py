@@ -61,7 +61,7 @@ def alfabeto_extensao():
     extensao = 26
     return extensao
 
-def montar_cabecalho():
+def monta_cabecalho():
     cabecalho = TEXTO_CABECALHO.format(
         TEXTO_BARRA, 
         "*"+TEXTO_NOME_PROGRAMA.center(len(TEXTO_BARRA)-2)+"*", 
@@ -71,8 +71,10 @@ def montar_cabecalho():
 
 # Função principal que interage com o usuário.
 def main():
-    print(montar_cabecalho())
+
+    print(monta_cabecalho())
     continua_programa = True
+    
     while continua_programa:
         modo = input(f"{TEXTO_ENTRADA_OPCOES} {TEXTO_OPCOES}").strip()
 
