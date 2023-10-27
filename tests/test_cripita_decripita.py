@@ -54,27 +54,6 @@ def alfabeto_extensao():
     extensao = 26
     return extensao
 
-'''Função principal que interage com o usuário.'''
-def main():
-    while True:
-        modo = input('Digite C para codificar, D para decodificar ou S para sair? ').strip(' ')
-
-        if modo.lower() not in ['c', 'd', 's']:
-            print("Modo inválido. Tente novamente.")
-            continue
-
-        if modo.lower() == 's':
-            break
-
-        mensagem = input('Digite uma mensagem: ')
-        chave = input('Digite uma chave: ')
-        
-        if modo.lower() == 'c':
-            print(codificar(mensagem=mensagem, chave=chave))
-        
-        else:
-            print(decodificar(mensagem=mensagem, chave=chave))
-
 '''Função que testa as funções codificar() e decodificar().'''
 def teste_cripita_decripita(mensagem : str, chave : str):
     mensagem_codificada = codificar(mensagem=mensagem, chave=chave)
@@ -203,6 +182,13 @@ def main():
     chave = '55jpdfohodh´/!'
 
     print(teste_cripita_decripita(mensagem, chave))
+
+    mensagem = 'Daria tudo que sei pela metade do que ignoro.'
+    chave = 'b2051802352cdb14d084dffb111b26fafe06c1e54b0c267654ecb8f521d4bad2'
+
+    print(teste_cripita_decripita(mensagem, chave))
+
+
 
     def teste_transforma_chave(chave):
         return transforma_chave(chave) % 26 == 0
