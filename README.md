@@ -5,7 +5,7 @@
 - [Wiliams Alves](https://github.com/alves05) 
 - [Adam Basílio](https://github.com/abasilio91)
 - [Lucas Félix](https://github.com/lucaxfelis)
-- [Gabriel](https://github.com/gabrielbsb82)
+- [Gabriel Oliveira Silva](https://github.com/gabrielbsb82)
 - [Henrique Freitas](https://github.com/henriqsf)
 
 ## Contextualização
