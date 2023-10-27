@@ -20,7 +20,6 @@ def codificar(mensagem: str, chave: str):
 
     return mensagem_codificada
 
-
 # Função que descriptografa a mensagem.
 def decodificar(mensagem: str, chave: str):
     mensagem_decodificada = ""
@@ -38,7 +37,6 @@ def decodificar(mensagem: str, chave: str):
 
     return mensagem_decodificada
 
-
 # Função que transforma a chave.
 def transforma_chave(chave: str):
     chave = str(chave)
@@ -49,12 +47,10 @@ def transforma_chave(chave: str):
 
     return chave_numerica % alfabeto_extensao()
 
-
 # Define o intervalo válido da funação chr().
 def ascii_extensao():
     invervalo = 1114112
     return invervalo
-
 
 # Define o intervalo do alfabeto português-BR.
 def alfabeto_extensao():
