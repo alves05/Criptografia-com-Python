@@ -135,32 +135,32 @@ def main():
     print(teste_cripita_decripita(mensagem, chave))
 
     mensagem = 'Nas dificuldades da vida, descobrimos a nossa verdadeira força interior.'
-    chave = '128'
+    chave = '128jh'
 
     print(teste_cripita_decripita(mensagem, chave))
 
     mensagem = 'A verdadeira riqueza está nas experiências que acumulamos e não nos bens materiais que possuímos.'
-    chave = '2850'
+    chave = 'abxd2850'
 
     print(teste_cripita_decripita(mensagem, chave))
 
     mensagem = 'A vida é curta demais para gastar tempo se preocupando com coisas que estão além do nosso controle. Viva! Sonhe!'
-    chave = '15'
+    chave = '15prlnx'
 
     print(teste_cripita_decripita(mensagem, chave))
 
     mensagem = 'Acredite em si e chegará um dia em que os outros não terão outra escolha senão acreditar com você.'
-    chave = '58'
+    chave = '58snhfjr'
 
     print(teste_cripita_decripita(mensagem, chave))
 
     mensagem = 'Pessimismo leva à fraqueza, otimismo ao poder.'
-    chave = '78'
+    chave = 'wefa¨6fdc78'
 
     print(teste_cripita_decripita(mensagem, chave))
 
     mensagem = 'O otimismo é a fé em ação. Nada se pode levar a efeito sem otimismo.'
-    chave = '85'
+    chave = 'aaa8asa()s5jkahs'
 
     print(teste_cripita_decripita(mensagem, chave))
 
@@ -170,7 +170,7 @@ def main():
     print(teste_cripita_decripita(mensagem, chave))
 
     mensagem = 'A vida é uma balança entre aceitar o que não podemos mudar e ter coragem para mudar o que podemos.'
-    chave = '1'
+    chave = '1&*-{}'
 
     print(teste_cripita_decripita(mensagem, chave))
 
@@ -190,17 +190,17 @@ def main():
     print(teste_cripita_decripita(mensagem, chave))
 
     mensagem = 'Não são as nossas ideias que nos fazem otimistas ou pessimistas, mas o otimismo e o pessimismo de origem fisiológica que fazem as nossas ideias.'
-    chave = '33'
+    chave = 'sddsd3sd@#3sdsd'
 
     print(teste_cripita_decripita(mensagem, chave))
 
     mensagem = 'Se estivermos atentos, a presença de Deus se revela nas pequenas coisas.'
-    chave = '22'
+    chave = 'asa22aaa'
 
     print(teste_cripita_decripita(mensagem, chave))
 
     mensagem = 'Sim, meu caro. A vida é curta, então não desperdice tempo se preocupando com o que não pode mudar.'
-    chave = '55'
+    chave = '55jpdfohodh´/!'
 
     print(teste_cripita_decripita(mensagem, chave))
 
