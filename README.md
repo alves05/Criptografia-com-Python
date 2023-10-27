@@ -37,10 +37,10 @@ O objetivo deste projeto é codificar e decodificar mensagens usando uma chave c
 
 ## Arquivos 
 
-- [Programa de Criptografia]("./code/cripita_decripita.py")
-- [Teste do cripita_decripita.py]("./tests/test_cripita_decripita.py")
-- [Outros Arquivos]("./others/")
-- [License]("LICENSE")
+- [Programa de Criptografia](./code/cripita_decripita.py)
+- [Teste do cripita_decripita.py](./tests/test_cripita_decripita.py)
+- [Outros Arquivos](./others/)
+- [License](LICENSE)
 
 ### O Método de Criptografia:
 
