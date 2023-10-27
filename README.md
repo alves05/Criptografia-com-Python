@@ -195,6 +195,25 @@ def alfabeto_extensao():
 
 </details>
 
+<details>
+
+<summary>6. função monta_cabecalho():</summary>
+
+- Monta o cabeçalho do programa a ser renderizado na chamada inicial.
+
+```
+'''Define o cabeçalho do programa.'''
+def monta_cabecalho():
+    cabecalho = TEXTO_CABECALHO.format(
+        TEXTO_BARRA, 
+        "*"+TEXTO_NOME_PROGRAMA.center(len(TEXTO_BARRA)-2)+"*", 
+        TEXTO_BARRA
+    )
+    return cabecalho
+```
+
+</details>
+
 ## Teste automatizado
 As funções criadas no teste tem o objetivo de validar e testar o programa de criptografia.
 
