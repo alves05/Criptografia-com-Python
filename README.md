@@ -1,13 +1,4 @@
 # Codificação e decodificação de mensagens com Python
-
-### O projeto foi realizado pela equipe:
-- [Katharine Olegario](https://github.com/KatharineOlegario) 
-- [Wiliams Alves](https://github.com/alves05) 
-- [Adam Basílio](https://github.com/abasilio91)
-- [Lucas Félix](https://github.com/lucaxfelis)
-- [Gabriel](https://github.com/gabrielbsb82)
-- [Henrique Freitas](https://github.com/henriqsf)
-
 ## Contextualização
 
 A PyCoders Ltda., cada vez mais especializada no mundo da Inteligência Artificial e Ciência de Dados, foi procurada por uma fintech para desenvolver um projeto codificação de dados. 
@@ -34,14 +25,6 @@ O objetivo deste projeto é codificar e decodificar mensagens usando uma chave c
 3. A mesma chave deve ser usada para processar a codificação e decodificação da mesma mensagem.
 
 ## Sobre o projeto
-
-## Arquivos 
-
-- [Programa de Criptografia]("./code/cripita_decripita.py")
-- [Teste do cripita_decripita.py]("./tests/test_cripita_decripita.py")
-- [Outros Arquivos]("./others/")
-- [License]("LICENSE")
-
 ### O Método de Criptografia:
 
 O método escolhido para este projeto foi a Cifra de Vigènere, que é classificada como um método *polialfabética*. O método recebe como entrada uma mensagem e uma chave alfanumérica. Este pode ser entendido como uma sequência de Cifras de César, em que cada caractere da mensagem é criptografada separadamente de acordo com o respectivo caractere da chave alfanumérica na mesma posição relativa. A equação que rege a criptografia segue abaixo:
