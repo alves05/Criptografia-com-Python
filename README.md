@@ -35,6 +35,13 @@ O objetivo deste projeto é codificar e decodificar mensagens usando uma chave c
 
 ## Sobre o projeto
 
+O projeto consiste na criação de um código que possibilita ao usuário criar uma mensagem criptografada usando uma senha criada e fornecida pelo próprio usuário, assim também, como descriptografar usando a mensagem criptografada e sua senha usada na criptografia.
+
+Para criação de um algoritmo que nos permitisse realizar tal tarefa, fizemos a utilização da cifra de Vigenère.
+
+Abaixo disponibilizamos os arquivos gerados durante a resolução do projeto, assim como, explicações sobre a cifra Vegenère, referências e explicações sobre as funções criadas no código.
+
+
 ## Arquivos 
 
 - [Programa de Criptografia](./code/cripita_decripita.py)
@@ -201,7 +208,7 @@ def ascii_extensao():
 
 <summary>5. função alfabeto_extensao():</summary>
 
-- Retorna o intervalo de ```26``` caracteres conrespondetes a o alfabeto pt-br.
+- Retorna o intervalo de ```26``` caracteres conrespondetes ao alfabeto pt-br.
 
 ```
 '''Define o intervalo do alfabeto português-BR.'''

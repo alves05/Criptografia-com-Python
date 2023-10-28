@@ -188,6 +188,11 @@ def main():
 
     print(teste_cripita_decripita(mensagem, chave))
 
+    mensagem = 'Daria tudo que sei pela metade do que ignoro.'
+    chave = 'b20德5180γ235🥰2c😃db1色4d0α84df'
+
+    print(teste_cripita_decripita(mensagem, chave))
+
 
 
     def teste_transforma_chave(chave):
